@@ -7,7 +7,8 @@
  *   data-phone      phone number shown on the "Call us" button, e.g. +38978981139
  *   data-whatsapp   WhatsApp number, digits only, e.g. 38978981139 (optional)
  *   data-lang       en | mk            (default: en)
- *   data-color      brand colour       (default: #e8590c)
+ *   data-color      main brand colour  (default: #0022FF, Aceski Media blue)
+ *   data-color2     gradient colour    (default: #110FDF)
  *   data-name       business name shown in the header (default: "We")
  *   data-position   right | left       (default: right)
  *   data-hours      opening hours as "Mon-Fri 09:00-17:00" (default: none = always "now")
@@ -24,7 +25,8 @@
     phone: script.dataset.phone || "",
     whatsapp: (script.dataset.whatsapp || "").replace(/\D/g, ""),
     lang: script.dataset.lang || "en",
-    color: script.dataset.color || "#e8590c",
+    color: script.dataset.color || "#0022FF",
+    color2: script.dataset.color2 || "#110FDF",
     name: script.dataset.name || "",
     position: script.dataset.position === "left" ? "left" : "right",
     hours: script.dataset.hours || "",
@@ -92,18 +94,18 @@
   var side = cfg.position;
   root.innerHTML =
     '<style>' +
-    ':host{all:initial}*{box-sizing:border-box;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}' +
-    '.fab{position:fixed;bottom:20px;' + side + ':20px;width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;background:' + cfg.color + ';color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;z-index:2147483646;transition:transform .15s}' +
+    ':host{all:initial}*{box-sizing:border-box;font-family:Montserrat,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}' +
+    '.fab{position:fixed;bottom:20px;' + side + ':20px;width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,' + cfg.color2 + ',' + cfg.color + ');color:#fff;box-shadow:0 6px 22px ' + cfg.color + '66;display:flex;align-items:center;justify-content:center;z-index:2147483646;transition:transform .15s}' +
     '.fab:hover{transform:scale(1.06)}.fab svg{width:28px;height:28px;fill:currentColor}' +
     '.panel{position:fixed;bottom:92px;' + side + ':20px;width:340px;max-width:calc(100vw - 24px);max-height:calc(100vh - 120px);overflow:auto;background:#fff;color:#1a1a1a;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.28);z-index:2147483647;display:none}' +
     '.panel.open{display:block;animation:in .18s ease-out}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}' +
-    '.head{background:' + cfg.color + ';color:#fff;padding:16px 18px;border-radius:16px 16px 0 0}.head h3{margin:0;font-size:17px}.head p{margin:4px 0 0;font-size:13px;opacity:.92}' +
+    '.head{background:linear-gradient(135deg,' + cfg.color2 + ',' + cfg.color + ');color:#fff;padding:16px 18px;border-radius:16px 16px 0 0}.head h3{margin:0;font-size:17px}.head p{margin:4px 0 0;font-size:13px;opacity:.92}' +
     '.tabs{display:flex;border-bottom:1px solid #eee}.tab{flex:1;padding:11px 4px;font-size:12.5px;font-weight:600;background:none;border:0;border-bottom:2px solid transparent;cursor:pointer;color:#666}' +
     '.tab[aria-selected=true]{color:' + cfg.color + ';border-bottom-color:' + cfg.color + '}' +
     '.body{padding:16px 18px 14px}label{display:block;font-size:12px;font-weight:600;margin:10px 0 4px;color:#444}' +
     'input,select,textarea{width:100%;padding:10px 11px;font-size:14px;border:1px solid #d6d6d6;border-radius:8px;background:#fff;color:#111}' +
     'input:focus,select:focus,textarea:focus{outline:2px solid ' + cfg.color + '33;border-color:' + cfg.color + '}textarea{min-height:76px;resize:vertical}' +
-    '.go{width:100%;margin-top:14px;padding:12px;font-size:14.5px;font-weight:700;color:#fff;background:' + cfg.color + ';border:0;border-radius:9px;cursor:pointer}.go[disabled]{opacity:.6;cursor:default}' +
+    '.go{width:100%;margin-top:14px;padding:12px;font-size:14.5px;font-weight:700;color:#fff;background:linear-gradient(135deg,' + cfg.color2 + ',' + cfg.color + ');border:0;border-radius:9px;cursor:pointer}.go[disabled]{opacity:.6;cursor:default}' +
     '.note{font-size:11px;color:#888;margin:10px 0 0}.msg{margin:10px 0 0;font-size:13px;padding:9px 11px;border-radius:8px}.msg.err{background:#fdecea;color:#b3261e}.msg.ok{background:#e8f5e9;color:#1b5e20}' +
     '.closed{font-size:12.5px;background:#fff6e5;color:#8a5a00;padding:8px 10px;border-radius:8px;margin-bottom:6px}' +
     '.alt{display:flex;gap:8px;padding:0 18px 16px}.alt a{flex:1;text-align:center;padding:9px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid #ddd;border-radius:8px;color:#333}' +

@@ -20,7 +20,7 @@ What it is NOT: "Call me now" does not auto-dial the visitor (that needs paid te
   data-hours="Mon-Fri 09:00-17:00"
   data-tz="Europe/Skopje"></script>
 ```
-`data-lang` supports `en` and `mk`. `data-color`, `data-position="left"` are optional.
+`data-lang` supports `en` and `mk`. `data-color` (default #0022FF), `data-color2` (gradient, default #110FDF) and `data-position="left"` are optional.
 Note: the script reads its settings from its own tag, so add it as a plain script tag, not through a loader that strips attributes.
 
 ## Tracking
